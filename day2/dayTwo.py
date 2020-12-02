@@ -6,9 +6,10 @@ partOneValidPasswordsCount = 0
 partTwoValidPasswordsCount = 0
 
 for line in content:
-    components = line.split(sep=' ')
-    minBound = int(components[0][0:components[0].index('-')])
-    maxBound = int(components[0][components[0].index('-') + 1: len(components[0])])
+    components = line.split(' ')
+    bounds = components[0].split('-')
+    minBound = int(bounds[0])
+    maxBound = int(bounds[1])
     letter = components[1][0:1]
     password = components[2]
 
