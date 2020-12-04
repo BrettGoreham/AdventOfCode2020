@@ -10,7 +10,7 @@ for line in content:
     bounds = components[0].split('-')
     minBound = int(bounds[0])
     maxBound = int(bounds[1])
-    letter = components[1][0:1]
+    letter = components[1][0]
     password = components[2]
 
     if minBound <= password.count(letter) <= maxBound:
