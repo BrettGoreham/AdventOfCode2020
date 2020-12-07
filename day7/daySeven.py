@@ -26,10 +26,8 @@ for i, line in enumerate(content):
 
 
 numBags = 0
-duplicate = 0
-search = 'shiny gold'
 searchResults = []
-toSearch = childrenToListOfPossibleParents[search]
+toSearch = childrenToListOfPossibleParents['shiny gold']
 while len(toSearch) > 0:
     nextBag = toSearch.pop(0)
     if nextBag not in searchResults:
@@ -38,7 +36,7 @@ while len(toSearch) > 0:
             for bag in childrenToListOfPossibleParents[nextBag]:
                 toSearch.append(bag)
 
-print('part one, number of bags that can hold at least one shiny gold', len(searchResults))
+print('part one: number of bags that can hold at least one shiny gold', len(searchResults))
 
 
 #recursion with base case being 0 children
@@ -50,4 +48,4 @@ def get_number_of_children(bag_name, parent_to_list_of_children):
 
 
 sumBagInGold = get_number_of_children('shiny gold', parentToListOfChildren)
-print('Number of bags that must be in shiny gold', sumBagInGold)
+print('Part two: Number of bags that must be in shiny gold', sumBagInGold)
