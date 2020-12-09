@@ -1,10 +1,12 @@
 from InstructionComputer import InstructionComputer
-with open('dayEightTestInput.txt') as f:
+with open('dayEightInput.txt') as f:
     content = f.readlines()
 content = [x.strip() for x in content]
 
 x = InstructionComputer(content)
 acc, isLooped, isTerminated = x.run()
+assert isLooped
+assert not isTerminated
 print('Part one accumulator when looped: ', acc)
 
 instructionToInstructionMap = {'jmp': 'nop', 'nop': 'jmp'}
