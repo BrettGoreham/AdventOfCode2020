@@ -54,3 +54,25 @@ content.append(content[len(content) - 1] + 3)
 content.insert(0, 0)
 newContent = content[:]
 print('part 2:', calculate_number_combinations(newContent[0:-1], newContent[len(content) - 1]))
+
+
+# now that ive had a good think about it here is a better option
+def find_part_2_but_better(numbers, range_to_count):
+    solutions = []
+    for i in range(0, len(numbers)):
+        if numbers[i] <= 1:
+            solutions.append(1)
+        else:
+            solution = 0
+            count_back = 1
+            while i-count_back >= 0 and count_back <= range_to_count:
+                if numbers[i] - range_to_count <= numbers[i - count_back]:
+                    solution += solutions[i-count_back]
+                count_back += 1
+
+            solutions.append(solution)
+
+    return solutions[len(solutions) - 1]
+
+
+print('part 2 but better:', find_part_2_but_better(content, 3))
