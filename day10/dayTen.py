@@ -16,27 +16,31 @@ for num in range(0, len(content)):
 
 print('part 1:', change[1] * change[3])
 
+# globally available calculation list i guess so i could avoid passing it around.
+# important because without it we calculate the same thing over and over again.
 previouslyCalculated = dict()
 
-def calculateNumberAvailable(numbersAvailable, last):
+
+def calculate_number_combinations(numbers_available, last):
     if last in previouslyCalculated:
         return previouslyCalculated[last]
-    countNumbersback = []
-    for i in range(0, min(3, len(numbersAvailable))):
-        if last - numbersAvailable[len(numbersAvailable) - 1 - i] < 4:
-            countNumbersback.append(i)
-
-    if len(numbersAvailable) <= 1:
+    if len(numbers_available) <= 1:
         return 1
     else:
-        product = 0
-        for i in countNumbersback:
-            value = calculateNumberAvailable(
-                    numbersAvailable[0:-(i+1)],
-                    numbersAvailable[len(numbersAvailable)-1 - i])
-            product += value
-            previouslyCalculated[numbersAvailable[len(numbersAvailable) - 1 - i]] = value
-        return product
+        numbers_in_range_of_last = []
+        for i in range(1, min(4, len(numbers_available) + 1)):
+            if last - numbers_available[len(numbers_available) - i] < 4:
+                numbers_in_range_of_last.append(i)
+
+        sum_of_solutions = 0
+        for i in numbers_in_range_of_last:
+            value = calculate_number_combinations(
+                numbers_available[0:-i],
+                numbers_available[len(numbers_available) - i]
+            )
+            sum_of_solutions += value
+            previouslyCalculated[numbers_available[len(numbers_available) - i]] = value
+        return sum_of_solutions
 
 
 with open('dayTenInput.txt') as f:
@@ -46,5 +50,5 @@ content = [int(x.strip()) for x in content]
 content.sort()
 content.append(content[len(content) - 1] + 3)
 content.insert(0, 0)
-newContent=content[:]
-print('part 2', calculateNumberAvailable(newContent[0:-1], newContent[len(content) - 1]))
+newContent = content[:]
+print('part 2:', calculate_number_combinations(newContent[0:-1], newContent[len(content) - 1]))
