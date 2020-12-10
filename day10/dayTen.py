@@ -21,6 +21,8 @@ print('part 1:', change[1] * change[3])
 previouslyCalculated = dict()
 
 
+# If i went from start to finish instead of finish to start the above dict isnt necessary....
+# as    x =  (x-1) + (x-2) + (x-3)  (if they exist)
 def calculate_number_combinations(numbers_available, last):
     if last in previouslyCalculated:
         return previouslyCalculated[last]
