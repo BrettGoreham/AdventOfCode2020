@@ -22,7 +22,7 @@ for nex in range(length, len(content)):
     preamble.append(num)
 
 
-findContig = 15690279
+findContig = numberThatCantBeAddedTo
 for i in range(0, len(content)-1):
     sumOfContig = content[i]
     minInContig = sumOfContig
@@ -35,6 +35,7 @@ for i in range(0, len(content)-1):
 
         sumOfContig += content[j]
         if sumOfContig == findContig:
-            print('part two sum of min max of contiguous indexes that add up to part 1:', maxInContig + minInContig)
+            print('part two sum of min max of contiguous indexs that add up to part 1:', maxInContig + minInContig)
         if sumOfContig > findContig:
+            # sum only goes up so we can quit
             break
