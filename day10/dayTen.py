@@ -4,7 +4,6 @@ content = [int(x.strip()) for x in content]
 
 content.sort()
 content.append(content[len(content) - 1] + 3)
-highestVal = content[len(content) - 2] + 3
 change = dict()
 start = 0
 for num in range(0, len(content)):
@@ -21,7 +20,7 @@ print('part 1:', change[1] * change[3])
 previouslyCalculated = dict()
 
 
-# If i went from start to finish instead of finish to start the above dict isnt necessary....
+# If i went from start to finish instead of finish to start the above dict isn't necessary....
 # as    x =  (x-1) + (x-2) + (x-3)  (if they exist)
 def calculate_number_combinations(numbers_available, last):
     if last in previouslyCalculated:
