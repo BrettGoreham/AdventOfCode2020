@@ -1,3 +1,5 @@
+import time
+start = time.time()
 with open('dayElevenInput.txt') as f:
     seatMap = []
     for line in f:
@@ -66,14 +68,16 @@ while notStable:
     seatMap = newSeatMap
     notStable = hasChanged
 
-countFree = 0
+countTaken = 0
 for row in range(0, len(seatMap[0])):
     for column in range(0, len(seatMap)):
         spaceValue = seatMap[column][row]
         if spaceValue == '#':
-            countFree += 1
+            countTaken += 1
 
-print('Part 1 Seats Taken:',  countFree)
+print('Part 1 Seats Taken:', countTaken)
+
+# start of part two here -----------------------------------------
 
 
 def becomes_free_2(seat_map, seat_x, seat_y):
@@ -151,11 +155,12 @@ while notStable:
     seatMap = newSeatMap
     notStable = hasChanged
 
-countFree = 0
+countTaken = 0
 for row in range(0, len(seatMap[0])):
     for column in range(0, len(seatMap)):
         spaceValue = seatMap[column][row]
         if spaceValue == '#':
-            countFree += 1
+            countTaken += 1
 
-print('Part 2 Seats Taken', countFree)
+print('Part 2 Seats Taken', countTaken)
+print('It took', time.time()-start, 'seconds.')
