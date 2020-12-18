@@ -47,9 +47,8 @@ def find_solution_sum(addition_precedence):
 
         while brackets_left_to_solve:
             open_brackets = [i for i, ltr in enumerate(equation) if ltr == '(']
-            closed_brackets = [i for i, ltr in enumerate(equation) if ltr == ')']
             if len(open_brackets) > 0:
-                close_to_solve = closed_brackets[0]
+                close_to_solve = equation.index(')')  # you can always solve the first closing bracket.
                 open_to_solve = open_brackets[len(open_brackets) - 1]
                 count = 1
                 while open_to_solve > close_to_solve:
