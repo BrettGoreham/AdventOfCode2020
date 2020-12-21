@@ -1,5 +1,6 @@
 from collections import defaultdict
-
+import time
+start = time.time()
 
 class Tile:
     def __init__(self, tile_list, tile_id):
@@ -62,7 +63,7 @@ class Tile:
             tile_row.pop(len(tile_row)-1)
 
     def get_all_possible_sides(self):
-        sides_possible = list
+        sides_possible = []
         sides_possible.append(self.tile_list[0])
         sides_possible.append(self.tile_list[0][::-1])
         sides_possible.append(self.tile_list[len(self.tile_list) - 1])
@@ -270,3 +271,4 @@ for row in totalRows:
             countHashTags += 1
 
 print('HashTags minus sea monsters ', countHashTags - (seaMonsterCount * seaMonsterNumOfHashtags))
+print('It took', time.time()-start, 'seconds.')
