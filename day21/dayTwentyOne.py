@@ -45,7 +45,6 @@ while len(allergenPossibleIngredients):
 
     knownAllergensMap[allergenAndIngredient[0]] = allergenAndIngredient[1].pop()
 
-print(knownAllergensMap)
 count = 0
 for food in foods:
     for ingredient in food.ingredients_list:
