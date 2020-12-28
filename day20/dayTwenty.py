@@ -2,6 +2,7 @@ from collections import defaultdict
 import time
 start = time.time()
 
+
 class Tile:
     def __init__(self, tile_list, tile_id):
         self.tile_id = tile_id
